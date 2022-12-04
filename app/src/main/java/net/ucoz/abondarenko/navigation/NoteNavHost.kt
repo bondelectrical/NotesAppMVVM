@@ -4,10 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import net.ucoz.abondarenko.screen.Add
-import net.ucoz.abondarenko.screen.Main
-import net.ucoz.abondarenko.screen.Note
-import net.ucoz.abondarenko.screen.Start
+import net.ucoz.abondarenko.screen.*
 
 
 @Composable
@@ -16,16 +13,16 @@ fun NoteNavHost() {
 
     NavHost(navController = navController, startDestination = Screen.Start.route) {
         composable(Screen.Start.route) {
-            Start(navController)
+            StartScreen(navController)
         }
         composable(Screen.Main.route) {
-            Main(navController)
+            MainScreen(navController)
         }
         composable(Screen.Add.route) {
-            Add(navController)
+            AddScreen(navController)
         }
         composable(Screen.Note.route) {
-            Note(navController)
+            NoteScreen(navController)
         }
     }
 }
