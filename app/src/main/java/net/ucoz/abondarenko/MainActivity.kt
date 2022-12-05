@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.NavHost
 import net.ucoz.abondarenko.navigation.NoteNavHost
 import net.ucoz.abondarenko.ui.theme.NotesAppTheme
 
