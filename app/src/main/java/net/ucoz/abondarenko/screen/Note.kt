@@ -1,6 +1,7 @@
 package net.ucoz.abondarenko.screen
 
 import android.annotation.SuppressLint
+import android.app.Application
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
@@ -8,17 +9,21 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import net.ucoz.abondarenko.MainViewModel
+import net.ucoz.abondarenko.MainViewModelFactory
 import net.ucoz.abondarenko.ui.theme.NotesAppTheme
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun NoteScreen(navHostController: NavHostController) {
+fun NoteScreen(navHostController: NavHostController, viewModel: MainViewModel) {
     Scaffold(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -56,6 +61,9 @@ fun NoteScreen(navHostController: NavHostController) {
 @Composable
 fun previewNoteScreen() {
     NotesAppTheme() {
-        NoteScreen(navHostController = rememberNavController())
+        val context = LocalContext.current
+        val viewModel: MainViewModel =
+            viewModel(factory = MainViewModelFactory(application = context.applicationContext as Application))
+        NoteScreen(navHostController = rememberNavController(), viewModel = viewModel)
     }
 }

@@ -1,11 +1,10 @@
 package net.ucoz.abondarenko
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import net.ucoz.abondarenko.database.AppRoomDatabase
 import net.ucoz.abondarenko.database.room.repository.RoomRepository
 import net.ucoz.abondarenko.model.Note
@@ -26,6 +25,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
             TYPE_FIREBASE -> {
 
+            }
+        }
+    }
+
+    fun readAllNotes() = REPOSITORY.readAll
+
+    fun addNote(note: Note, onSuccess: () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            REPOSITORY.create(note = note) {
+                viewModelScope.launch(Dispatchers.Main) {
+                    onSuccess()
+                }
             }
         }
 

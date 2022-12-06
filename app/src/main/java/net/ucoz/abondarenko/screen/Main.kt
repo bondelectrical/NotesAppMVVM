@@ -11,7 +11,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -30,10 +29,9 @@ import net.ucoz.abondarenko.ui.theme.NotesAppTheme
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MainScreen(navHostController: NavHostController) {
-    val context = LocalContext.current
-    val viewModel: MainViewModel =
-        viewModel(factory = MainViewModelFactory(application = context.applicationContext as Application))
+fun MainScreen(navHostController: NavHostController, viewModel: MainViewModel) {
+
+    val notes = viewModel.readAllNotes().observeAsState(listOf()).value
 
     Scaffold(
         floatingActionButton = {
@@ -49,10 +47,10 @@ fun MainScreen(navHostController: NavHostController) {
 
         }) {
         LazyColumn {
-//            items(notes) { note ->
-//                NoteItem(note = note, navHostController = navHostController)
-//
-//            }
+            items(notes) { note ->
+                NoteItem(note = note, navHostController = navHostController)
+
+            }
         }
     }
 
@@ -86,6 +84,9 @@ fun NoteItem(note: Note, navHostController: NavHostController) {
 @Composable
 fun previewMainScreen() {
     NotesAppTheme() {
-        MainScreen(navHostController = rememberNavController())
+        val context = LocalContext.current
+        val viewModel: MainViewModel =
+            viewModel(factory = MainViewModelFactory(application = context.applicationContext as Application))
+        MainScreen(navHostController = rememberNavController(), viewModel = viewModel)
     }
 }

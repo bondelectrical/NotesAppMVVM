@@ -26,7 +26,7 @@ import net.ucoz.abondarenko.utils.TYPE_ROOM
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun StartScreen(navHostController: NavHostController) {
+fun StartScreen(navHostController: NavHostController, viewModel: MainViewModel) {
     val context = LocalContext.current
     val viewModel: MainViewModel =
         viewModel(factory = MainViewModelFactory(application = context.applicationContext as Application))
@@ -79,6 +79,9 @@ fun StartScreen(navHostController: NavHostController) {
 @Composable
 fun previewStartScreen() {
     NotesAppTheme() {
-        StartScreen(navHostController = rememberNavController())
+        val context = LocalContext.current
+        val viewModel: MainViewModel =
+            viewModel(factory = MainViewModelFactory(application = context.applicationContext as Application))
+        StartScreen(navHostController = rememberNavController(), viewModel = viewModel)
     }
 }
