@@ -1,5 +1,6 @@
 package net.ucoz.abondarenko.screen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
@@ -15,6 +16,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import net.ucoz.abondarenko.ui.theme.NotesAppTheme
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun NoteScreen(navHostController: NavHostController) {
     Scaffold(modifier = Modifier.fillMaxSize()) {

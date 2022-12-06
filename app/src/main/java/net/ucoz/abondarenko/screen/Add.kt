@@ -1,5 +1,6 @@
 package net.ucoz.abondarenko.screen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -15,7 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import net.ucoz.abondarenko.navigation.Screen
 import net.ucoz.abondarenko.ui.theme.NotesAppTheme
 
-
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun AddScreen(navHostController: NavHostController) {
     var title by remember { mutableStateOf("") }
