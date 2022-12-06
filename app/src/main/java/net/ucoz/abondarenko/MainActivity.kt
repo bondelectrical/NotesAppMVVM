@@ -1,5 +1,6 @@
 package net.ucoz.abondarenko
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,6 +15,7 @@ import net.ucoz.abondarenko.navigation.NoteNavHost
 import net.ucoz.abondarenko.ui.theme.NotesAppTheme
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

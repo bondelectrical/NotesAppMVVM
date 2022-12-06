@@ -41,8 +41,10 @@ fun StartScreen(navHostController: NavHostController) {
             Spacer(modifier = Modifier.size(32.dp))
             Button(
                 onClick = {
-                    viewModel.initDatabase(type = TYPE_ROOM)
-                    navHostController.navigate(route = Screen.Main.route)
+                    viewModel.initDatabase(type = TYPE_ROOM) {
+                        navHostController.navigate(route = Screen.Main.route)
+                    }
+
                 },
                 modifier = Modifier
                     .height(48.dp)
@@ -55,8 +57,10 @@ fun StartScreen(navHostController: NavHostController) {
             Spacer(modifier = Modifier.size(32.dp))
             Button(
                 onClick = {
-                    viewModel.initDatabase(type = TYPE_FIREBASE)
-                    navHostController.navigate(route = Screen.Main.route)
+                    viewModel.initDatabase(type = TYPE_FIREBASE) {
+                        navHostController.navigate(route = Screen.Main.route)
+                    }
+
                 },
                 modifier = Modifier
                     .height(48.dp)
