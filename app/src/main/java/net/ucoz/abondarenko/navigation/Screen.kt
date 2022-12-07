@@ -1,8 +1,13 @@
 package net.ucoz.abondarenko.navigation
 
+import net.ucoz.abondarenko.utils.Constants.Screen.ADD_SCREEN
+import net.ucoz.abondarenko.utils.Constants.Screen.MAIN_SCREEN
+import net.ucoz.abondarenko.utils.Constants.Screen.NOTE_SCREEN
+import net.ucoz.abondarenko.utils.Constants.Screen.START_SCREEN
+
 sealed class Screen(val route: String ) {
-    object Start: Screen("start_screen")
-    object Main: Screen("main_screen")
-    object Add: Screen("add_screen")
-    object Note: Screen("note_screen")
+    object Start: Screen(START_SCREEN)
+    object Main: Screen(MAIN_SCREEN)
+    object Add: Screen(ADD_SCREEN)
+    object Note: Screen(NOTE_SCREEN)
 }

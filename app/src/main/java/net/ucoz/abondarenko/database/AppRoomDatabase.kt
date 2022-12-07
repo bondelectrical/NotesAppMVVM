@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import net.ucoz.abondarenko.database.room.dao.NoteRoomDao
 import net.ucoz.abondarenko.model.Note
+import net.ucoz.abondarenko.utils.Constants.Keys.NOTE_DATABASE
 
 @Database(entities = [Note::class], version = 1)
 abstract class AppRoomDatabase: RoomDatabase() {
@@ -19,7 +20,7 @@ abstract class AppRoomDatabase: RoomDatabase() {
         fun getInstance(context: Context): AppRoomDatabase {
             return if (INSTANCE == null) {
                 INSTANCE =
-                    Room.databaseBuilder(context, AppRoomDatabase::class.java, "notes_database")
+                    Room.databaseBuilder(context, AppRoomDatabase::class.java, NOTE_DATABASE)
                         .build()
                 INSTANCE as AppRoomDatabase
             } else {

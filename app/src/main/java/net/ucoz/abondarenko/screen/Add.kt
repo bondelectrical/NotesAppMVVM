@@ -21,6 +21,10 @@ import net.ucoz.abondarenko.MainViewModelFactory
 import net.ucoz.abondarenko.model.Note
 import net.ucoz.abondarenko.navigation.Screen
 import net.ucoz.abondarenko.ui.theme.NotesAppTheme
+import net.ucoz.abondarenko.utils.Constants.Keys.ADD_NEW_NOTE
+import net.ucoz.abondarenko.utils.Constants.Keys.ADD_NOTE
+import net.ucoz.abondarenko.utils.Constants.Keys.NOTE_SUBTITLE
+import net.ucoz.abondarenko.utils.Constants.Keys.NOTE_TITLE
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -37,7 +41,7 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Add new note",
+                text = ADD_NEW_NOTE,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(vertical = 8.dp)
@@ -49,7 +53,7 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
                     isButtonEnable = title.isNotEmpty() && subTitle.isNotEmpty()
                     title = it
                 },
-                label = { Text(text = "Note title") },
+                label = { Text(text = NOTE_TITLE) },
                 isError = title.isEmpty()
             )
             Spacer(modifier = Modifier.size(16.dp))
@@ -59,7 +63,7 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
                     isButtonEnable = title.isNotEmpty() && subTitle.isNotEmpty()
                     subTitle = it
                 },
-                label = { Text(text = "Note subtitle") },
+                label = { Text(text = NOTE_SUBTITLE) },
                 isError = subTitle.isEmpty()
             )
             Spacer(modifier = Modifier.size(32.dp))
@@ -77,7 +81,7 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
                 shape = RoundedCornerShape(32.dp),
                 elevation = ButtonDefaults.elevation(8.dp),
             ) {
-                Text(text = "Add note")
+                Text(text = ADD_NOTE)
             }
         }
 

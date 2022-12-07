@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import net.ucoz.abondarenko.MainViewModel
 import net.ucoz.abondarenko.screen.*
+import net.ucoz.abondarenko.utils.Constants.Keys.ID
 
 
 @Composable
@@ -22,8 +23,8 @@ fun NoteNavHost(viewModel: MainViewModel) {
         composable(Screen.Add.route) {
             AddScreen(navController, viewModel)
         }
-        composable(Screen.Note.route) {
-            NoteScreen(navController, viewModel)
+        composable(Screen.Note.route + "/{${ID}}") { backStackEntry ->
+            NoteScreen(navController, viewModel, noteId = backStackEntry.arguments?.getString(ID))
         }
     }
 }

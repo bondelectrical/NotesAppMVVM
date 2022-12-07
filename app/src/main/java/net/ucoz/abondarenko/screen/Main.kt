@@ -63,7 +63,7 @@ fun NoteItem(note: Note, navHostController: NavHostController) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp, 8.dp)
-            .clickable { navHostController.navigate(route = Screen.Note.route) },
+            .clickable { navHostController.navigate(route = Screen.Note.route + "/${note.id}") },
         elevation = 8.dp
     ) {
         Column(

@@ -21,6 +21,9 @@ import net.ucoz.abondarenko.MainViewModel
 import net.ucoz.abondarenko.MainViewModelFactory
 import net.ucoz.abondarenko.navigation.Screen
 import net.ucoz.abondarenko.ui.theme.NotesAppTheme
+import net.ucoz.abondarenko.utils.Constants.Keys.FIREBASE_DATABASE
+import net.ucoz.abondarenko.utils.Constants.Keys.ROOM_DATABASE
+import net.ucoz.abondarenko.utils.Constants.Keys.WHAT_WILL_WE_USE
 import net.ucoz.abondarenko.utils.TYPE_FIREBASE
 import net.ucoz.abondarenko.utils.TYPE_ROOM
 
@@ -37,7 +40,7 @@ fun StartScreen(navHostController: NavHostController, viewModel: MainViewModel) 
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = "What will we use?")
+            Text(text = WHAT_WILL_WE_USE)
             Spacer(modifier = Modifier.size(32.dp))
             Button(
                 onClick = {
@@ -52,7 +55,7 @@ fun StartScreen(navHostController: NavHostController, viewModel: MainViewModel) 
                 shape = RoundedCornerShape(32.dp),
                 elevation = ButtonDefaults.elevation(8.dp),
             ) {
-                Text(text = "Room database")
+                Text(text = ROOM_DATABASE)
             }
             Spacer(modifier = Modifier.size(32.dp))
             Button(
@@ -68,7 +71,7 @@ fun StartScreen(navHostController: NavHostController, viewModel: MainViewModel) 
                 shape = RoundedCornerShape(32.dp),
                 elevation = ButtonDefaults.elevation(8.dp),
             ) {
-                Text(text = "Firebase database")
+                Text(text = FIREBASE_DATABASE)
             }
         }
 
