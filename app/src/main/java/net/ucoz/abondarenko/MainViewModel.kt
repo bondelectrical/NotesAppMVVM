@@ -1,16 +1,17 @@
 package net.ucoz.abondarenko
 
 import android.app.Application
-import android.view.Gravity
+
 import android.widget.Toast
 import androidx.lifecycle.*
-import androidx.lifecycle.viewmodel.CreationExtras
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import net.ucoz.abondarenko.database.AppRoomDatabase
 import net.ucoz.abondarenko.database.firebase.FirebaseRepository
 import net.ucoz.abondarenko.database.room.repository.RoomRepository
 import net.ucoz.abondarenko.model.Note
+import net.ucoz.abondarenko.utils.Constants.Keys.EMPTY
+import net.ucoz.abondarenko.utils.DB_TYPE
 import net.ucoz.abondarenko.utils.REPOSITORY
 import net.ucoz.abondarenko.utils.TYPE_FIREBASE
 import net.ucoz.abondarenko.utils.TYPE_ROOM
@@ -66,6 +67,20 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 viewModelScope.launch(Dispatchers.Main) {
                     onSuccess()
                 }
+            }
+        }
+    }
+
+    fun signOut(onSuccess: () -> Unit) {
+        when (DB_TYPE.value) {
+            TYPE_ROOM,
+            TYPE_FIREBASE -> {
+                REPOSITORY.sigOut()
+                DB_TYPE.value = EMPTY
+                onSuccess()
+            }
+            else -> {
+
             }
         }
 
