@@ -26,6 +26,10 @@ import net.ucoz.abondarenko.MainViewModelFactory
 import net.ucoz.abondarenko.model.Note
 import net.ucoz.abondarenko.navigation.Screen
 import net.ucoz.abondarenko.ui.theme.NotesAppTheme
+import net.ucoz.abondarenko.utils.Constants.Keys.EMPTY
+import net.ucoz.abondarenko.utils.DB_TYPE
+import net.ucoz.abondarenko.utils.TYPE_FIREBASE
+import net.ucoz.abondarenko.utils.TYPE_ROOM
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -59,11 +63,17 @@ fun MainScreen(navHostController: NavHostController, viewModel: MainViewModel) {
 
 @Composable
 fun NoteItem(note: Note, navHostController: NavHostController) {
+
+    val noteId = when (DB_TYPE) {
+        TYPE_FIREBASE -> note.firebaseId
+        TYPE_ROOM -> note.id
+        else -> EMPTY
+    }
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp, 8.dp)
-            .clickable { navHostController.navigate(route = Screen.Note.route + "/${note.id}") },
+            .clickable { navHostController.navigate(route = Screen.Note.route + "/${noteId}") },
         elevation = 8.dp
     ) {
         Column(

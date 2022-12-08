@@ -30,13 +30,22 @@ import net.ucoz.abondarenko.utils.Constants.Keys.NAV_BACK
 import net.ucoz.abondarenko.utils.Constants.Keys.NONE
 import net.ucoz.abondarenko.utils.Constants.Keys.UPDATE
 import net.ucoz.abondarenko.utils.Constants.Keys.UPDATE_NOTE
+import net.ucoz.abondarenko.utils.DB_TYPE
+import net.ucoz.abondarenko.utils.TYPE_FIREBASE
+import net.ucoz.abondarenko.utils.TYPE_ROOM
 
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun NoteScreen(navHostController: NavHostController, viewModel: MainViewModel, noteId: String?) {
     val notes = viewModel.readAllNotes().observeAsState(listOf()).value
-    val note = notes.firstOrNull { it.id == noteId?.toInt() } ?: Note(title = NONE, subtitle = NONE)
+    val note = when(DB_TYPE) {
+        TYPE_ROOM -> notes.firstOrNull { it.id == noteId?.toInt() } ?: Note()
+        TYPE_FIREBASE -> notes.firstOrNull { it.firebaseId == noteId } ?: Note()
+        else -> Note()
+    }
+
+
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
         bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
     )
@@ -84,7 +93,7 @@ fun NoteScreen(navHostController: NavHostController, viewModel: MainViewModel, n
                     Button(
                         modifier = Modifier.padding(top = 16.dp),
                         onClick = {
-                            viewModel.updateNote(Note(id = note.id, title = title, subtitle = subTitle)) {
+                            viewModel.updateNote(Note(id = note.id, title = title, subtitle = subTitle, firebaseId = note.firebaseId)) {
                                navHostController.navigate(Screen.Main.route)
                             }
 
