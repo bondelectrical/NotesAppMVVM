@@ -67,7 +67,7 @@ class FirebaseRepository: DatabaseRepository {
         mAuth.signInWithEmailAndPassword(LOGIN, PASSWORD).addOnSuccessListener {
             onSuccess()
         }.addOnFailureListener {
-            mAuth.signInWithEmailAndPassword(LOGIN, PASSWORD).addOnSuccessListener {
+            mAuth.createUserWithEmailAndPassword(LOGIN, PASSWORD).addOnSuccessListener {
                 onSuccess()
             }.addOnFailureListener {
                 onFail(it.message.toString())
