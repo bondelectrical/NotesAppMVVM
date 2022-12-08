@@ -81,7 +81,7 @@ fun StartScreen(navHostController: NavHostController, viewModel: MainViewModel) 
                             LOGIN = login
                             PASSWORD = password
                             viewModel.initDatabase(type = TYPE_FIREBASE) {
-
+                                navHostController.navigate(route = Screen.Main.route)
                             }
                         },
                         enabled = login.isNotEmpty() && password.isNotEmpty()
