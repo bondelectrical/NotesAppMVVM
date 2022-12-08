@@ -55,7 +55,7 @@ fun NoteScreen(navHostController: NavHostController, viewModel: MainViewModel, n
             Surface() {
                 Column(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
                         .padding(all = 32.dp)
                 ) {
                     Text(

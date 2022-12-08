@@ -1,11 +1,14 @@
 package net.ucoz.abondarenko
 
 import android.app.Application
+import android.view.Gravity
+import android.widget.Toast
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import net.ucoz.abondarenko.database.AppRoomDatabase
+import net.ucoz.abondarenko.database.firebase.FirebaseRepository
 import net.ucoz.abondarenko.database.room.repository.RoomRepository
 import net.ucoz.abondarenko.model.Note
 import net.ucoz.abondarenko.utils.REPOSITORY
@@ -24,6 +27,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 onSuccess()
             }
             TYPE_FIREBASE -> {
+                REPOSITORY = FirebaseRepository()
+                REPOSITORY.connectToDatabase({
+                    onSuccess()
+                }, {
+                    Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                })
 
             }
         }

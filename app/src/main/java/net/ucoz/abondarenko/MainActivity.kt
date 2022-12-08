@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import net.ucoz.abondarenko.navigation.NoteNavHost
 import net.ucoz.abondarenko.ui.theme.NotesAppTheme
+import net.ucoz.abondarenko.ui.theme.Purple700
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = { Text(text = "Notes App") },
-                            backgroundColor = Color.Blue,
+                            backgroundColor = Purple700,
                             contentColor = Color.White,
                             elevation = 8.dp
                         )
