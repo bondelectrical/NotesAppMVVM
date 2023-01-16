@@ -68,6 +68,7 @@ fun MainScreen(navHostController: NavHostController, viewModel: MainViewModel) {
         LazyColumnScrollbar(
             listState
         ) {
+
             LazyColumn(state = listState) {
                 items(notes) { note ->
                     NoteItem(note = note, navHostController = navHostController)

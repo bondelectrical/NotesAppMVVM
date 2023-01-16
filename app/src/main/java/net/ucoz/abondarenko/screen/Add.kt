@@ -111,7 +111,9 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
                     focusManager.clearFocus()
                 })
             )
-            Spacer(modifier = Modifier.size(32.dp))
+            Spacer(modifier = Modifier
+                .size(32.dp)
+                .bringIntoViewRequester(bringIntoViewRequester))
             Button(
                 enabled = isButtonEnable,
                 onClick = {
@@ -123,7 +125,7 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
                 modifier = Modifier
                     .height(48.dp)
                     .width(250.dp)
-                    .bringIntoViewRequester(bringIntoViewRequester),
+                    ,
                 shape = RoundedCornerShape(32.dp),
                 elevation = ButtonDefaults.elevation(8.dp),
             ) {

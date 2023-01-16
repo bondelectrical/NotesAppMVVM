@@ -137,7 +137,12 @@ fun LazyColumnScrollbar(
                     .width(thickness)
                     .clip(thumbShape)
                     .background(thumbColor)
-                    .fillMaxHeight(normalizedThumbSize)
+                    .fillMaxHeight(if(listState.layoutInfo.totalItemsCount == 0) {
+                        0f
+                    }else {
+                        normalizedThumbSize
+                    }
+                            )
             )
         }
 
