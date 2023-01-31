@@ -78,13 +78,6 @@ fun MainScreen(navHostController: NavHostController, viewModel: MainViewModel) {
         }
 
 
-//        LazyColumn() {
-//            items(notes) { note ->
-//                NoteItem(note = note, navHostController = navHostController)
-//
-//            }
-//        }
-
     }
 
 }
