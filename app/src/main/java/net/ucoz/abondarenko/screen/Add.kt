@@ -2,6 +2,7 @@ package net.ucoz.abondarenko.screen
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.relocation.BringIntoViewRequester
@@ -17,6 +18,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusEvent
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
@@ -68,6 +72,27 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
                 modifier = Modifier.padding(top = 32.dp, start = 8.dp, end = 8.dp)
             )
             Spacer(modifier = Modifier.size(16.dp))
+            Text(
+                text = ADD_NEW_NOTE,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 32.dp, start = 8.dp, end = 8.dp)
+            )
+            Spacer(modifier = Modifier.size(16.dp))
+            Text(
+                text = ADD_NEW_NOTE,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 32.dp, start = 8.dp, end = 8.dp)
+            )
+            Spacer(modifier = Modifier.size(16.dp))
+            Text(
+                text = ADD_NEW_NOTE,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 32.dp, start = 8.dp, end = 8.dp)
+            )
+            Spacer(modifier = Modifier.size(16.dp))
             OutlinedTextField(
                 modifier = Modifier.onFocusEvent { event ->
                     if(event.isFocused) {
@@ -86,6 +111,7 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
                 isError = title.isEmpty(),
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                 keyboardActions = KeyboardActions(onDone = {
+                    Log.d("MyTag", "onDone")
                     focusManager.clearFocus()
                 })
             )
@@ -93,7 +119,9 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
             OutlinedTextField(
                 modifier = Modifier.onFocusEvent { event ->
                     if(event.isFocused) {
+                        Log.d("MyTag", "onFocusEvent1")
                         coroutineScope.launch {
+                            Log.d("MyTag", "onFocusEvent2")
                             bringIntoViewRequester.bringIntoView()
                         }
                     }
@@ -113,7 +141,8 @@ fun AddScreen(navHostController: NavHostController, viewModel: MainViewModel) {
             )
             Spacer(modifier = Modifier
                 .size(32.dp)
-                .bringIntoViewRequester(bringIntoViewRequester))
+//                .bringIntoViewRequester(bringIntoViewRequester)
+                )
             Button(
                 enabled = isButtonEnable,
                 onClick = {

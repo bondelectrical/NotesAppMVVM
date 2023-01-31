@@ -126,25 +126,26 @@ fun LazyColumnScrollbar(
             .fillMaxWidth()
             .padding(vertical = 8.dp)
             .fillMaxHeight()
-    )  {
-            Box(
-                Modifier
-                    .align(Alignment.TopEnd)
-                    .graphicsLayer {
-                        translationY = constraints.maxHeight.toFloat() * normalizedOffsetPosition
-                    }
-                    .padding(horizontal = padding)
-                    .width(thickness)
-                    .clip(thumbShape)
-                    .background(thumbColor)
-                    .fillMaxHeight(if(listState.layoutInfo.totalItemsCount == 0) {
+    ) {
+        Box(
+            Modifier
+                .align(Alignment.TopEnd)
+                .graphicsLayer {
+                    translationY = constraints.maxHeight.toFloat() * normalizedOffsetPosition
+                }
+                .padding(horizontal = padding)
+                .width(thickness)
+                .clip(thumbShape)
+                .background(thumbColor)
+                .fillMaxHeight(
+                    if (listState.layoutInfo.totalItemsCount == 0) {
                         0f
-                    }else {
+                    } else {
                         normalizedThumbSize
                     }
-                            )
-            )
-        }
+                )
+        )
+    }
 
 
 }
