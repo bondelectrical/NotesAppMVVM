@@ -61,6 +61,7 @@ fun MainScreen(navHostController: NavHostController, viewModel: MainViewModel) {
                     imageVector = Icons.Filled.Add,
                     contentDescription = "Add ",
                     tint = Color.White
+
                 )
             }
 
