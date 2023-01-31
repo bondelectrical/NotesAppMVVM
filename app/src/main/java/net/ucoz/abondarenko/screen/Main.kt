@@ -46,6 +46,7 @@ fun MainScreen(navHostController: NavHostController) {
                     imageVector = Icons.Filled.Add,
                     contentDescription = "Add ",
                     tint = Color.White
+
                 )
             }
 
