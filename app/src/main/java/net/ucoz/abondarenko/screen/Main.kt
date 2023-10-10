@@ -73,7 +73,6 @@ fun MainScreen(navHostController: NavHostController, viewModel: MainViewModel) {
             LazyColumn(state = listState) {
                 items(notes) { note ->
                     NoteItem(note = note, navHostController = navHostController)
-                    NoteItem(note = note, navHostController = navHostController)
                 }
             }
         }
